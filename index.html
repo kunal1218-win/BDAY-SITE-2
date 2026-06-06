@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hey Something Special For You☺️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Arial,sans-serif;
+overflow:hidden;
+background:linear-gradient(135deg,#FFD6E7,#FFE8D6,#FFF6E9);
+height:100vh;
+}
+.page{
+position:absolute; inset:0;
+display:flex; flex-direction:column;
+justify-content:center; align-items:center;
+text-align:center;
+padding:20px;
+}
+.hidden{display:none}
+h1{color:#ff4d94;margin-bottom:20px}
+.btn{
+background:#ff6fae;color:white;border:none;
+padding:16px 30px;border-radius:30px;
+font-size:1.1rem;cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,.2)
+}
+.heart{
+position:absolute;
+bottom:-50px;
+font-size:24px;
+animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+from{transform:translateY(0);opacity:1}
+to{transform:translateY(-120vh);opacity:0}
+}
+.gif{width:180px;border-radius:18px}
+.cake{width:220px;margin-top:10px;border-radius:16px}
+.candles{
+font-size:70px;
+font-weight:bold;
+color:#d4af37;
+line-height:1;
+margin-bottom:5px;
+text-shadow:0 0 10px gold;
+}
+.flame{
+font-size:24px;
+animation:flicker .8s infinite alternate;
+}
+@keyframes flicker{
+from{transform:scale(1)}
+to{transform:scale(1.2)}
+}
+.msg{
+max-width:350px;
+margin-top:15px;
+color:#7a3a55;
+font-size:15px;
+}
+.confetti{
+position:absolute;
+top:-20px;
+animation:fall linear infinite;
+}
+@keyframes fall{
+to{transform:translateY(110vh) rotate(360deg)}
+}
+</style>
+</head>
+<body>
+
+<div id="page1" class="page">
+<h1>Hey Something Special For You☺️</h1>
+<p style="margin-bottom:20px">A special surprise is waiting for you ✨</p>
+<button class="btn" onclick="openSurprise()">Open Surprise 🎁</button>
+</div>
+
+<div id="page2" class="page hidden">
+<audio id="music" src="bday.mp3"></audio>
+
+<h1>Happy 19th Birthday Ayush patil☺️</h1>
+
+<div class="flame">🔥 &nbsp;&nbsp; 🔥</div>
+<div class="candles">1&nbsp;9</div>
+
+<img class="gif" src="https://tenor.com/kLtC67DwffQ.gif" alt="">
+
+<img class="cake" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWN5d2N0eWFncHY1cG52YW9pajBvcjUwMWVsMHYycGlia2wwcHlibiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7NON3hH96H4InrrkPy/giphy.gif" alt="">
+
+<p class="msg">
+On your special day, I wish you endless happiness, beautiful memories,
+success in everything you do, and countless reasons to smile.
+Happy Birthday! ☺️🎂✨
+</p>
+</div>
+
+<script>
+function makeHeart(){
+ const h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="🍬", "🍫";
+ h.style.left=Math.random()*100+"vw";
+ h.style.animationDuration=(4+Math.random()*5)+"s";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),9000);
+}
+setInterval(makeHeart,350);
+
+function makeConfetti(){
+ const c=document.createElement("div");
+ c.className="confetti";
+ c.innerHTML=["🎉","✨","🎂","🍬","🍫",][Math.floor(Math.random()*4)];
+ c.style.left=Math.random()*100+"vw";
+ c.style.animationDuration=(3+Math.random()*4)+"s";
+ document.body.appendChild(c);
+ setTimeout(()=>c.remove(),7000);
+}
+
+function openSurprise(){
+ document.getElementById("page1").classList.add("hidden");
+ document.getElementById("page2").classList.remove("hidden");
+ const m=document.getElementById("music");
+ m.play().catch(()=>{});
+ setInterval(makeConfetti,250);
+}
+</script>
+</body>
+</html>
